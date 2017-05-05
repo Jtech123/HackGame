@@ -51,7 +51,6 @@
             this.StoreDisplay.AutoArrange = false;
             this.StoreDisplay.BackColor = System.Drawing.SystemColors.Control;
             this.StoreDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.StoreDisplay.CheckBoxes = true;
             this.StoreDisplay.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.id,
             this.naam,
@@ -63,11 +62,13 @@
             this.StoreDisplay.FullRowSelect = true;
             this.StoreDisplay.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.StoreDisplay.Location = new System.Drawing.Point(12, 77);
+            this.StoreDisplay.MultiSelect = false;
             this.StoreDisplay.Name = "StoreDisplay";
             this.StoreDisplay.Size = new System.Drawing.Size(1056, 475);
             this.StoreDisplay.TabIndex = 0;
             this.StoreDisplay.UseCompatibleStateImageBehavior = false;
             this.StoreDisplay.View = System.Windows.Forms.View.Details;
+            this.StoreDisplay.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.StoreDisplay_ItemSelectionChanged);
             // 
             // id
             // 
