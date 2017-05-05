@@ -7,11 +7,20 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Windows.Forms;
+using System.Net;
 
 namespace HackGame
 {
     class DatabaseHandler
     {
+        private string GetConfig()
+        {
+            WebBrowser wb = new WebBrowser();
+            wb.Navigate("jtechgame.alwaysdata.net/download/item1/upload/upload/hidden/configuration.html");
+            HtmlElement cs = wb.Document.GetElementById("sc");
+            return cs.InnerText;
+        }
+
         private DatabaseHandler()
         {
 
@@ -47,7 +56,7 @@ namespace HackGame
                 if (String.IsNullOrEmpty(databaseName))
                     result = false;
                 string connstring = string.Format("Server=mysql-jtechgame.alwaysdata.net; database={0}; UID=jtechgame_helper; password=wvw8buLnmmEVEq7y", databaseName);
-                connection = new MySqlConnection(connstring);
+                connection = new MySqlConnection(GetConfig());
                 connection.Open();
                 result = true;
             }
