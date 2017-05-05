@@ -230,6 +230,7 @@
             this.Controls.Add(this.mbLbl);
             this.Controls.Add(this.PriceLbl);
             this.Controls.Add(this.CategorieLbl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "CodingTool2017";
             this.Text = "Coding Tool 2017 Enterprice";

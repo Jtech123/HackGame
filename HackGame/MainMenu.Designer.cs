@@ -254,7 +254,7 @@
             // 
             this.libraryBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.libraryBtn.BackColor = System.Drawing.Color.Transparent;
-            this.libraryBtn.BackgroundImage = global::HackGame.Properties.Resources.globe;
+            this.libraryBtn.BackgroundImage = global::HackGame.Properties.Resources.library;
             this.libraryBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.libraryBtn.FlatAppearance.BorderSize = 0;
             this.libraryBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
@@ -273,7 +273,7 @@
             // 
             this.browserLauncher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.browserLauncher.BackColor = System.Drawing.Color.Transparent;
-            this.browserLauncher.BackgroundImage = global::HackGame.Properties.Resources.globe;
+            this.browserLauncher.BackgroundImage = global::HackGame.Properties.Resources.browser;
             this.browserLauncher.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.browserLauncher.FlatAppearance.BorderSize = 0;
             this.browserLauncher.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
@@ -292,7 +292,7 @@
             // 
             this.companyLauncher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.companyLauncher.BackColor = System.Drawing.Color.Transparent;
-            this.companyLauncher.BackgroundImage = global::HackGame.Properties.Resources.company;
+            this.companyLauncher.BackgroundImage = global::HackGame.Properties.Resources.company2;
             this.companyLauncher.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.companyLauncher.FlatAppearance.BorderSize = 0;
             this.companyLauncher.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
@@ -311,7 +311,7 @@
             // 
             this.researchLauncher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.researchLauncher.BackColor = System.Drawing.Color.Transparent;
-            this.researchLauncher.BackgroundImage = global::HackGame.Properties.Resources.research;
+            this.researchLauncher.BackgroundImage = global::HackGame.Properties.Resources.research1;
             this.researchLauncher.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.researchLauncher.FlatAppearance.BorderSize = 0;
             this.researchLauncher.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
@@ -364,7 +364,7 @@
             // 
             // statBtn
             // 
-            this.statBtn.BackgroundImage = global::HackGame.Properties.Resources._001_wifi;
+            this.statBtn.BackgroundImage = global::HackGame.Properties.Resources.connection;
             this.statBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.statBtn.FlatAppearance.BorderSize = 0;
             this.statBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -378,7 +378,7 @@
             // 
             // storeBtn
             // 
-            this.storeBtn.BackgroundImage = global::HackGame.Properties.Resources._003_shopping_cart;
+            this.storeBtn.BackgroundImage = global::HackGame.Properties.Resources.store;
             this.storeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.storeBtn.FlatAppearance.BorderSize = 0;
             this.storeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

@@ -28,18 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Library));
             this.libraryTabs = new System.Windows.Forms.TabControl();
             this.owned = new System.Windows.Forms.TabPage();
-            this.developed = new System.Windows.Forms.TabPage();
-            this.ownedListView = new System.Windows.Forms.ListView();
             this.usernameLbl = new System.Windows.Forms.Label();
+            this.ownedListView = new System.Windows.Forms.ListView();
+            this.NameColOwn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.developed = new System.Windows.Forms.TabPage();
             this.devView = new System.Windows.Forms.ListView();
             this.NameColDev = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PriceColDev = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SoldColDev = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.libraryTabs.SuspendLayout();
             this.owned.SuspendLayout();
             this.developed.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // libraryTabs
@@ -47,10 +54,10 @@
             this.libraryTabs.Controls.Add(this.owned);
             this.libraryTabs.Controls.Add(this.developed);
             this.libraryTabs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.libraryTabs.Location = new System.Drawing.Point(0, 0);
+            this.libraryTabs.Location = new System.Drawing.Point(0, 24);
             this.libraryTabs.Name = "libraryTabs";
             this.libraryTabs.SelectedIndex = 0;
-            this.libraryTabs.Size = new System.Drawing.Size(709, 320);
+            this.libraryTabs.Size = new System.Drawing.Size(709, 296);
             this.libraryTabs.TabIndex = 0;
             // 
             // owned
@@ -60,31 +67,10 @@
             this.owned.Location = new System.Drawing.Point(4, 22);
             this.owned.Name = "owned";
             this.owned.Padding = new System.Windows.Forms.Padding(3);
-            this.owned.Size = new System.Drawing.Size(701, 294);
+            this.owned.Size = new System.Drawing.Size(701, 270);
             this.owned.TabIndex = 0;
             this.owned.Text = "Software owned by me";
             this.owned.UseVisualStyleBackColor = true;
-            // 
-            // developed
-            // 
-            this.developed.Controls.Add(this.devView);
-            this.developed.Location = new System.Drawing.Point(4, 22);
-            this.developed.Name = "developed";
-            this.developed.Padding = new System.Windows.Forms.Padding(3);
-            this.developed.Size = new System.Drawing.Size(701, 294);
-            this.developed.TabIndex = 1;
-            this.developed.Text = "Software developed by me/my company";
-            this.developed.UseVisualStyleBackColor = true;
-            // 
-            // ownedListView
-            // 
-            this.ownedListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ownedListView.Location = new System.Drawing.Point(3, 3);
-            this.ownedListView.Name = "ownedListView";
-            this.ownedListView.Size = new System.Drawing.Size(695, 288);
-            this.ownedListView.TabIndex = 0;
-            this.ownedListView.UseCompatibleStateImageBehavior = false;
-            this.ownedListView.View = System.Windows.Forms.View.Details;
             // 
             // usernameLbl
             // 
@@ -96,6 +82,35 @@
             this.usernameLbl.TabIndex = 1;
             this.usernameLbl.Text = global::HackGame.Properties.Settings.Default.un;
             // 
+            // ownedListView
+            // 
+            this.ownedListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.NameColOwn});
+            this.ownedListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ownedListView.FullRowSelect = true;
+            this.ownedListView.Location = new System.Drawing.Point(3, 3);
+            this.ownedListView.Name = "ownedListView";
+            this.ownedListView.Size = new System.Drawing.Size(695, 264);
+            this.ownedListView.TabIndex = 0;
+            this.ownedListView.UseCompatibleStateImageBehavior = false;
+            this.ownedListView.View = System.Windows.Forms.View.Details;
+            // 
+            // NameColOwn
+            // 
+            this.NameColOwn.Text = "Name";
+            this.NameColOwn.Width = 180;
+            // 
+            // developed
+            // 
+            this.developed.Controls.Add(this.devView);
+            this.developed.Location = new System.Drawing.Point(4, 22);
+            this.developed.Name = "developed";
+            this.developed.Padding = new System.Windows.Forms.Padding(3);
+            this.developed.Size = new System.Drawing.Size(701, 270);
+            this.developed.TabIndex = 1;
+            this.developed.Text = "Software developed by me/my company";
+            this.developed.UseVisualStyleBackColor = true;
+            // 
             // devView
             // 
             this.devView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -105,7 +120,7 @@
             this.devView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.devView.Location = new System.Drawing.Point(3, 3);
             this.devView.Name = "devView";
-            this.devView.Size = new System.Drawing.Size(695, 288);
+            this.devView.Size = new System.Drawing.Size(695, 264);
             this.devView.TabIndex = 0;
             this.devView.UseCompatibleStateImageBehavior = false;
             this.devView.View = System.Windows.Forms.View.Details;
@@ -123,12 +138,48 @@
             // 
             this.SoldColDev.Text = "Sold";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(709, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.refreshToolStripMenuItem.Text = "&Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.exitToolStripMenuItem.Text = "&Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // Library
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(709, 320);
             this.Controls.Add(this.libraryTabs);
+            this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Library";
             this.Text = "Library";
             this.Load += new System.EventHandler(this.Library_Load);
@@ -136,7 +187,10 @@
             this.owned.ResumeLayout(false);
             this.owned.PerformLayout();
             this.developed.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -151,5 +205,10 @@
         private System.Windows.Forms.ColumnHeader NameColDev;
         private System.Windows.Forms.ColumnHeader PriceColDev;
         private System.Windows.Forms.ColumnHeader SoldColDev;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ColumnHeader NameColOwn;
     }
 }
