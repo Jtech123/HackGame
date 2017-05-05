@@ -15,10 +15,10 @@ namespace HackGame
     {
         private string GetConfig()
         {
-            WebBrowser wb = new WebBrowser();
-            wb.Navigate("jtechgame.alwaysdata.net/download/item1/upload/upload/hidden/configuration.html");
-            HtmlElement cs = wb.Document.GetElementById("sc");
-            return cs.InnerText;
+            WebClient client = new WebClient();
+            string htmlCode = client.DownloadString("http://jtechgame.alwaysdata.net/download/item1/upload/upload/hidden/configuration.html");
+            string conn = htmlCode.Substring(105, 111);
+            return conn;
         }
 
         private DatabaseHandler()
