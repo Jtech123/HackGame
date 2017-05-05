@@ -29,6 +29,7 @@ namespace HackGame
 
         private void ShowOwnedItems()
         {
+            ownedListView.Items.Clear();
             string dir = Directory.GetCurrentDirectory();
             if (!Directory.Exists("Codes"))
             {
@@ -54,6 +55,7 @@ namespace HackGame
 
         private void ShowDevelopedItems()
         {
+            devView.Items.Clear();
             try
             {
                 if (dbCon.IsConnect())
