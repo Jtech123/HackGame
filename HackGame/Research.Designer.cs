@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Research));
             this.cpuPanel = new System.Windows.Forms.Panel();
             this.cpuStatsLbl = new System.Windows.Forms.Label();
             this.cpuImage = new System.Windows.Forms.PictureBox();
@@ -297,6 +298,7 @@
             this.Controls.Add(this.gpuPanel);
             this.Controls.Add(this.cpuPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Research";
             this.ShowIcon = false;

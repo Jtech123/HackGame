@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CompanyManagement));
             this.tabs = new System.Windows.Forms.TabControl();
             this.select_companie = new System.Windows.Forms.TabPage();
             this.companySelector = new System.Windows.Forms.ComboBox();
@@ -49,18 +50,18 @@
             this.join_comp_nameLbl = new System.Windows.Forms.Label();
             this.listAllCompanies = new System.Windows.Forms.ComboBox();
             this.finance = new System.Windows.Forms.TabPage();
-            this.developments = new System.Windows.Forms.TabPage();
-            this.employees = new System.Windows.Forms.TabPage();
-            this.management = new System.Windows.Forms.TabPage();
-            this.searchStateLbl = new System.Windows.Forms.Label();
-            this.searchStateBtn = new System.Windows.Forms.Button();
+            this.total_F = new System.Windows.Forms.Label();
+            this.total_F_lbl = new System.Windows.Forms.Label();
             this.financeView = new System.Windows.Forms.ListView();
             this.pName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pSold = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pBal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.total_F_lbl = new System.Windows.Forms.Label();
-            this.total_F = new System.Windows.Forms.Label();
+            this.developments = new System.Windows.Forms.TabPage();
+            this.employees = new System.Windows.Forms.TabPage();
+            this.management = new System.Windows.Forms.TabPage();
+            this.searchStateLbl = new System.Windows.Forms.Label();
+            this.searchStateBtn = new System.Windows.Forms.Button();
             this.tabs.SuspendLayout();
             this.select_companie.SuspendLayout();
             this.start_a_company.SuspendLayout();
@@ -292,6 +293,60 @@
             this.finance.Text = "Finance";
             this.finance.UseVisualStyleBackColor = true;
             // 
+            // total_F
+            // 
+            this.total_F.AutoSize = true;
+            this.total_F.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.total_F.Location = new System.Drawing.Point(574, 47);
+            this.total_F.Name = "total_F";
+            this.total_F.Size = new System.Drawing.Size(28, 20);
+            this.total_F.TabIndex = 2;
+            this.total_F.Text = "{0}";
+            // 
+            // total_F_lbl
+            // 
+            this.total_F_lbl.AutoSize = true;
+            this.total_F_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.total_F_lbl.Location = new System.Drawing.Point(480, 47);
+            this.total_F_lbl.Name = "total_F_lbl";
+            this.total_F_lbl.Size = new System.Drawing.Size(88, 20);
+            this.total_F_lbl.TabIndex = 1;
+            this.total_F_lbl.Text = "Total profit:";
+            // 
+            // financeView
+            // 
+            this.financeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.financeView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.pName,
+            this.pPrice,
+            this.pSold,
+            this.pBal});
+            this.financeView.FullRowSelect = true;
+            this.financeView.Location = new System.Drawing.Point(8, 6);
+            this.financeView.Name = "financeView";
+            this.financeView.Size = new System.Drawing.Size(466, 455);
+            this.financeView.TabIndex = 0;
+            this.financeView.UseCompatibleStateImageBehavior = false;
+            this.financeView.View = System.Windows.Forms.View.Details;
+            // 
+            // pName
+            // 
+            this.pName.Text = "Product name";
+            this.pName.Width = 237;
+            // 
+            // pPrice
+            // 
+            this.pPrice.Text = "Price";
+            // 
+            // pSold
+            // 
+            this.pSold.Text = "Sold";
+            // 
+            // pBal
+            // 
+            this.pBal.Text = "Profit";
+            this.pBal.Width = 100;
+            // 
             // developments
             // 
             this.developments.Location = new System.Drawing.Point(4, 22);
@@ -341,66 +396,13 @@
             this.searchStateBtn.UseVisualStyleBackColor = true;
             this.searchStateBtn.Click += new System.EventHandler(this.searchStateBtn_Click);
             // 
-            // financeView
-            // 
-            this.financeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.financeView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.pName,
-            this.pPrice,
-            this.pSold,
-            this.pBal});
-            this.financeView.FullRowSelect = true;
-            this.financeView.Location = new System.Drawing.Point(8, 6);
-            this.financeView.Name = "financeView";
-            this.financeView.Size = new System.Drawing.Size(466, 455);
-            this.financeView.TabIndex = 0;
-            this.financeView.UseCompatibleStateImageBehavior = false;
-            this.financeView.View = System.Windows.Forms.View.Details;
-            // 
-            // pName
-            // 
-            this.pName.Text = "Product name";
-            this.pName.Width = 237;
-            // 
-            // pPrice
-            // 
-            this.pPrice.Text = "Price";
-            // 
-            // pSold
-            // 
-            this.pSold.Text = "Sold";
-            // 
-            // pBal
-            // 
-            this.pBal.Text = "Profit";
-            this.pBal.Width = 100;
-            // 
-            // total_F_lbl
-            // 
-            this.total_F_lbl.AutoSize = true;
-            this.total_F_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.total_F_lbl.Location = new System.Drawing.Point(480, 47);
-            this.total_F_lbl.Name = "total_F_lbl";
-            this.total_F_lbl.Size = new System.Drawing.Size(88, 20);
-            this.total_F_lbl.TabIndex = 1;
-            this.total_F_lbl.Text = "Total profit:";
-            // 
-            // total_F
-            // 
-            this.total_F.AutoSize = true;
-            this.total_F.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.total_F.Location = new System.Drawing.Point(574, 47);
-            this.total_F.Name = "total_F";
-            this.total_F.Size = new System.Drawing.Size(28, 20);
-            this.total_F.TabIndex = 2;
-            this.total_F.Text = "{0}";
-            // 
             // CompanyManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(953, 493);
             this.Controls.Add(this.tabs);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "CompanyManagement";
             this.Text = "CompanyManagement";

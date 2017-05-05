@@ -24,15 +24,38 @@ namespace HackGame
         {
             dbCon = DatabaseHandler.Instance();
             ShowDevelopedItems();
+            ShowOwnedItems();
         }
 
         private void ShowOwnedItems()
         {
-            
+            ownedListView.Items.Clear();
+            string dir = Directory.GetCurrentDirectory();
+            if (!Directory.Exists("Codes"))
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = "There are no items...";
+                ownedListView.Items.Add(item);
+            }
+            else
+            {
+                string[] files = Directory.GetFiles(dir + @"\Codes");
+                foreach (string file in files)
+                {
+                    if (file.EndsWith(".exe"))
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(file);
+                        ListViewItem item = new ListViewItem();
+                        item.Text = fileName;
+                        ownedListView.Items.Add(item);
+                    }
+                }
+            }
         }
 
         private void ShowDevelopedItems()
         {
+            devView.Items.Clear();
             try
             {
                 if (dbCon.IsConnect())
@@ -52,6 +75,17 @@ namespace HackGame
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowDevelopedItems();
+            ShowOwnedItems();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

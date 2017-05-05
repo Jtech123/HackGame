@@ -204,6 +204,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\png\new\browser.png" />
+    <None Include="assets\png\new\library.png" />
+    <None Include="assets\png\new\research.png" />
+    <None Include="assets\png\new\company2.png" />
+    <None Include="assets\png\new\store.png" />
+    <None Include="assets\png\new\connection.png" />
     <Content Include="assets\png\research.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
