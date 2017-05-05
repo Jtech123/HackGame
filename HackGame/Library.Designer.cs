@@ -84,6 +84,7 @@
             // 
             // ownedListView
             // 
+            this.ownedListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ownedListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.NameColOwn});
             this.ownedListView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -113,11 +114,13 @@
             // 
             // devView
             // 
+            this.devView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.devView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.NameColDev,
             this.PriceColDev,
             this.SoldColDev});
             this.devView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.devView.FullRowSelect = true;
             this.devView.Location = new System.Drawing.Point(3, 3);
             this.devView.Name = "devView";
             this.devView.Size = new System.Drawing.Size(695, 264);

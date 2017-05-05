@@ -81,5 +81,15 @@ namespace HackGame
 
         #endregion
 
+        private void StoreDisplay_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            for (int i = 0; i < StoreDisplay.Items.Count; i++)
+            {
+                if (this.StoreDisplay.Items[i].Selected)
+                {
+                    MessageBox.Show(StoreDisplay.Items[i].Text);
+                }
+            }
+        }
     }
 }
