@@ -114,7 +114,7 @@
             this.developed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.developed.Name = "developed";
             this.developed.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.developed.Size = new System.Drawing.Size(937, 335);
+            this.developed.Size = new System.Drawing.Size(937, 337);
             this.developed.TabIndex = 1;
             this.developed.Text = "Software developed by me/my company";
             this.developed.UseVisualStyleBackColor = true;
@@ -131,7 +131,7 @@
             this.devView.Location = new System.Drawing.Point(4, 4);
             this.devView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.devView.Name = "devView";
-            this.devView.Size = new System.Drawing.Size(929, 327);
+            this.devView.Size = new System.Drawing.Size(929, 329);
             this.devView.TabIndex = 0;
             this.devView.UseCompatibleStateImageBehavior = false;
             this.devView.View = System.Windows.Forms.View.Details;

@@ -69,6 +69,20 @@ namespace HackGame
                         item.SubItems.Add(devProgramsU.Rows[i]["sold"].ToString());
                         devView.Items.Add(item);
                     }
+                    DataTable companiesByP = dbCon.Select("SELECT * FROM tbl_companies WHERE (ceo='" + usernameLbl.Text + "')", "companysByplayer");
+                    for (int j = 0; j < companiesByP.Rows.Count; j++)
+                    {
+                        DataRow company = companiesByP.Rows[j];
+                        DataTable devProgramsComp = dbCon.Select("SELECT * FROM tbl_programs WHERE (made_by='" + company["name"].ToString() + "')", "devCompPrograms");
+                        for (int k = 0; k < devProgramsComp.Rows.Count; k++)
+                        {
+                            ListViewItem item = new ListViewItem();
+                            item.Text = devProgramsComp.Rows[k]["name"].ToString();
+                            item.SubItems.Add(devProgramsComp.Rows[k]["price"].ToString());
+                            item.SubItems.Add(devProgramsComp.Rows[k]["sold"].ToString());
+                            devView.Items.Add(item);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
