@@ -54,20 +54,22 @@
             this.libraryTabs.Controls.Add(this.owned);
             this.libraryTabs.Controls.Add(this.developed);
             this.libraryTabs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.libraryTabs.Location = new System.Drawing.Point(0, 24);
+            this.libraryTabs.Location = new System.Drawing.Point(0, 28);
+            this.libraryTabs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.libraryTabs.Name = "libraryTabs";
             this.libraryTabs.SelectedIndex = 0;
-            this.libraryTabs.Size = new System.Drawing.Size(709, 296);
+            this.libraryTabs.Size = new System.Drawing.Size(945, 366);
             this.libraryTabs.TabIndex = 0;
             // 
             // owned
             // 
             this.owned.Controls.Add(this.usernameLbl);
             this.owned.Controls.Add(this.ownedListView);
-            this.owned.Location = new System.Drawing.Point(4, 22);
+            this.owned.Location = new System.Drawing.Point(4, 25);
+            this.owned.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.owned.Name = "owned";
-            this.owned.Padding = new System.Windows.Forms.Padding(3);
-            this.owned.Size = new System.Drawing.Size(701, 270);
+            this.owned.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.owned.Size = new System.Drawing.Size(937, 337);
             this.owned.TabIndex = 0;
             this.owned.Text = "Software owned by me";
             this.owned.UseVisualStyleBackColor = true;
@@ -76,9 +78,10 @@
             // 
             this.usernameLbl.AutoSize = true;
             this.usernameLbl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::HackGame.Properties.Settings.Default, "un", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.usernameLbl.Location = new System.Drawing.Point(666, -13);
+            this.usernameLbl.Location = new System.Drawing.Point(888, -16);
+            this.usernameLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.usernameLbl.Name = "usernameLbl";
-            this.usernameLbl.Size = new System.Drawing.Size(0, 13);
+            this.usernameLbl.Size = new System.Drawing.Size(0, 17);
             this.usernameLbl.TabIndex = 1;
             this.usernameLbl.Text = global::HackGame.Properties.Settings.Default.un;
             // 
@@ -89,12 +92,15 @@
             this.NameColOwn});
             this.ownedListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ownedListView.FullRowSelect = true;
-            this.ownedListView.Location = new System.Drawing.Point(3, 3);
+            this.ownedListView.Location = new System.Drawing.Point(4, 4);
+            this.ownedListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ownedListView.Name = "ownedListView";
-            this.ownedListView.Size = new System.Drawing.Size(695, 264);
+            this.ownedListView.Size = new System.Drawing.Size(929, 329);
             this.ownedListView.TabIndex = 0;
             this.ownedListView.UseCompatibleStateImageBehavior = false;
             this.ownedListView.View = System.Windows.Forms.View.Details;
+            this.ownedListView.Click += new System.EventHandler(this.ownedListView_Click);
+            this.ownedListView.DoubleClick += new System.EventHandler(this.ownedListView_DoubleClick);
             // 
             // NameColOwn
             // 
@@ -104,10 +110,11 @@
             // developed
             // 
             this.developed.Controls.Add(this.devView);
-            this.developed.Location = new System.Drawing.Point(4, 22);
+            this.developed.Location = new System.Drawing.Point(4, 25);
+            this.developed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.developed.Name = "developed";
-            this.developed.Padding = new System.Windows.Forms.Padding(3);
-            this.developed.Size = new System.Drawing.Size(701, 270);
+            this.developed.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.developed.Size = new System.Drawing.Size(937, 335);
             this.developed.TabIndex = 1;
             this.developed.Text = "Software developed by me/my company";
             this.developed.UseVisualStyleBackColor = true;
@@ -121,9 +128,10 @@
             this.SoldColDev});
             this.devView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.devView.FullRowSelect = true;
-            this.devView.Location = new System.Drawing.Point(3, 3);
+            this.devView.Location = new System.Drawing.Point(4, 4);
+            this.devView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.devView.Name = "devView";
-            this.devView.Size = new System.Drawing.Size(695, 264);
+            this.devView.Size = new System.Drawing.Size(929, 327);
             this.devView.TabIndex = 0;
             this.devView.UseCompatibleStateImageBehavior = false;
             this.devView.View = System.Windows.Forms.View.Details;
@@ -143,11 +151,13 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(709, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(945, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -157,32 +167,33 @@
             this.refreshToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "&File";
             // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.refreshToolStripMenuItem.Text = "&Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // Library
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 320);
+            this.ClientSize = new System.Drawing.Size(945, 394);
             this.Controls.Add(this.libraryTabs);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Library";
             this.Text = "Library";
             this.Load += new System.EventHandler(this.Library_Load);

@@ -87,5 +87,26 @@ namespace HackGame
         {
             this.Close();
         }
+
+        private void ownedListView_DoubleClick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < ownedListView.Items.Count; i++)
+            {
+                if (ownedListView.Items[i].Selected)
+                {
+                    System.Diagnostics.Process process = new System.Diagnostics.Process();
+                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                    startInfo.FileName = "cmd.exe";
+                    startInfo.Arguments = @"/k cd Codes\ && " + ownedListView.Items[i].Text + ".exe && EXIT";
+                    process.StartInfo = startInfo;
+                    process.Start();
+                }
+            }
+        }
+
+        private void ownedListView_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
