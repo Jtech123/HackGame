@@ -120,45 +120,65 @@ namespace HackGame
             private void cashTmr_Tick(object sender, EventArgs e)
             {
 
-                try
+            /*try
+            {
+                dbCon = DatabaseHandler.Instance();
+                if (dbCon.IsConnect())
                 {
-                    dbCon = DatabaseHandler.Instance();
-                    if (dbCon.IsConnect())
+                    string sql = "SELECT money FROM tbl_users WHERE username=@username";
+                    MySqlCommand cmd = new MySqlCommand(sql, dbCon.Connection);
+                    cmd.Parameters.AddWithValue("@username", username.Text);
+                    cmd.Prepare();
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        string sql = "SELECT money FROM tbl_users WHERE username=@username";
-                        MySqlCommand cmd = new MySqlCommand(sql, dbCon.Connection);
-                        cmd.Parameters.AddWithValue("@username", username.Text);
-                        cmd.Prepare();
-                        MySqlDataReader reader = cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            string valuta = reader.GetString(0);
-                            double cash = Convert.ToDouble(valuta);
-                            cashLbl.Text = (cash / 100).ToString();
-                        }
-                        reader.Close();
+                        string valuta = reader.GetString(0);
+                        double cash = Convert.ToDouble(valuta);
+                        cashLbl.Text = (cash / 100).ToString();
                     }
-                }
-                catch (Exception ex)
-                {
-                    statusWindow stats = new statusWindow();
-                    stats.Show();
-                    cashTmr.Stop();
-                    DialogResult result = MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.RetryCancel);
-                    if (result == DialogResult.Retry)
-                    {
-
-                        dbCon.DatabaseName = "jtechgame_hack";
-                        dbCon.ResetConn();
-                        cashTmr.Start();
-                    }
-                    else if (result == DialogResult.Cancel)
-                    {
-                        Environment.Exit(0);
-                    }
-
+                    reader.Close();
                 }
             }
+            catch (Exception ex)
+            {
+                statusWindow stats = new statusWindow();
+                stats.Show();
+                cashTmr.Stop();
+                DialogResult result = MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.RetryCancel);
+                if (result == DialogResult.Retry)
+                {
+
+                    dbCon.DatabaseName = "jtechgame_hack";
+                    dbCon.ResetConn();
+                    cashTmr.Start();
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    Environment.Exit(0);
+                }
+
+            }*/
+
+            dbCon = DatabaseHandler.Instance();
+            using (var conn = new MySqlConnection(dbCon.GetConfig()))
+            using (var cmd = conn.CreateCommand())
+            {
+                conn.Open();
+                cmd.CommandText = "SELECT money FROM tbl_users WHERE username=@username";
+                cmd.Parameters.AddWithValue("@username", username.Text);
+                cmd.Prepare();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string valuta = reader.GetString(0);
+                        double cash = Convert.ToDouble(valuta);
+                        cashLbl.Text = (cash / 100).ToString();
+                    }
+                    reader.Close();
+                }
+            }
+        }
 
         #endregion
         #region taskbar

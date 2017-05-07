@@ -13,7 +13,7 @@ namespace HackGame
 {
     class DatabaseHandler
     {
-        private string GetConfig()
+        public string GetConfig()
         {
             WebClient client = new WebClient();
             string htmlCode = client.DownloadString("http://jtechgame.alwaysdata.net/download/item1/upload/upload/hidden/configuration.html");
