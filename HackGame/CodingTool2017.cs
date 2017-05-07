@@ -11,6 +11,7 @@ using MySql.Data;
 using System.IO;
 using MySql.Data.MySqlClient;
 using System.Net;
+using System.Threading;
 
 namespace HackGame
 {
@@ -212,11 +213,11 @@ namespace HackGame
                                 }
                                 money = money - (price / 2);
                                 reader2.Close();
-                                if (userMoney.Rows.Count == 0)
+                                /*if (userMoney.Rows.Count == 0)
                                 {
-                                    string sql3 = "UPDATE tbl_companies SET (money=@money) WHERE (name=@name)";
+                                    string sql3 = "UPDATE tbl_companies SET (money=@money) WHERE (name=@name2)";
                                     MySqlCommand cmd3 = new MySqlCommand(sql3, dbCon.Connection);
-                                    cmd3.Parameters.AddWithValue("@name", madeByBox.Text);
+                                    cmd3.Parameters.AddWithValue("@name2", madeByBox.Text);
                                     cmd3.Parameters.AddWithValue("@money", money);
                                     cmd3.Prepare();
                                     MySqlDataReader reader3 = cmd2.ExecuteReader();
@@ -228,9 +229,9 @@ namespace HackGame
                                 }
                                 else
                                 {
-                                    string sql3 = "UPDATE tbl_users SET (money=@money) WHERE (username=@name)";
+                                    string sql3 = "UPDATE tbl_users SET (money=@money) WHERE (username=@name3)";
                                     MySqlCommand cmd3 = new MySqlCommand(sql3, dbCon.Connection);
-                                    cmd3.Parameters.AddWithValue("@name", madeByBox.Text);
+                                    cmd3.Parameters.AddWithValue("@name3", madeByBox.Text);
                                     cmd3.Parameters.AddWithValue("@money", money);
                                     cmd3.Prepare();
                                     MySqlDataReader reader3 = cmd2.ExecuteReader();
@@ -239,7 +240,7 @@ namespace HackGame
 
                                     }
                                     reader2.Close();
-                                }
+                                }*/
                             }
                             reader.Close();
                             string dir = Directory.GetCurrentDirectory();
@@ -251,6 +252,7 @@ namespace HackGame
                             {
 
                                 writer.WriteLine(codeBox.Text);
+                                Thread.Sleep(500);
                                 System.Diagnostics.Process process = new System.Diagnostics.Process();
                                 System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
                                 startInfo.FileName = "cmd.exe";
@@ -263,6 +265,7 @@ namespace HackGame
                                 process.StartInfo = startInfo;
                                 process.Start();
                             }
+                            Thread.Sleep(1000);
                             WebClient client = new WebClient();
                             client.UploadFile("http://jtechgame.alwaysdata.net/download/item1/upload/upload/hidden/unifiedloading.php", "POST", dir + @"\Codes\" + nameBox.Text + ".exe");
                         }
@@ -283,7 +286,6 @@ namespace HackGame
 
                     dbCon.DatabaseName = "jtechgame_hack";
                     dbCon.ResetConn();
-                    Publish_Click(sender, e);
                 }
                 else if (result == DialogResult.Cancel)
                 {
