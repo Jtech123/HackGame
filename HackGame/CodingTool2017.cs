@@ -173,76 +173,8 @@ namespace HackGame
                     }
                     else
                     {
-                        
                         if (!codeBox.Text.ToLower().Contains("socket"))
                         {
-                            string sql = "SELECT * FROM tbl_programs WHERE name=@name";
-                            MySqlCommand cmd = new MySqlCommand(sql, dbCon.Connection);
-                            cmd.Parameters.AddWithValue("@name", nameBox.Text);
-                            using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
-                            {
-
-                            }
-                            cmd.Prepare();
-                            MySqlDataReader reader = cmd.ExecuteReader();
-                            if (reader.HasRows)
-                            {
-                                MessageBox.Show("This name is already taken");
-                                while (reader.Read())
-                                {
-
-                                }
-                                reader.Close();
-                            }
-                            else
-                            {
-                                reader.Close();
-                                sql = "INSERT INTO tbl_programs (name, price, made_by, categorie, created_at, available_since) VALUES (@name, @price, @madeBy, @categorie, NOW(), @availableSince)";
-                                MySqlCommand cmd2 = new MySqlCommand(sql, dbCon.Connection);
-                                cmd2.Parameters.AddWithValue("@name", nameBox.Text);
-                                cmd2.Parameters.AddWithValue("@price", priceBox.Text);
-                                cmd2.Parameters.AddWithValue("@madeBy", madeByBox.Text);
-                                cmd2.Parameters.AddWithValue("@categorie", categorieComboBox.Text);
-                                DateTime calculation = calculateTime();
-                                cmd2.Parameters.AddWithValue("@availableSince", calculation);
-                                cmd2.Prepare();
-                                MySqlDataReader reader2 = cmd2.ExecuteReader();
-                                while (reader2.Read())
-                                {
-
-                                }
-                                money = money - (price / 2);
-                                reader2.Close();
-                                /*if (userMoney.Rows.Count == 0)
-                                {
-                                    string sql3 = "UPDATE tbl_companies SET (money=@money) WHERE (name=@name2)";
-                                    MySqlCommand cmd3 = new MySqlCommand(sql3, dbCon.Connection);
-                                    cmd3.Parameters.AddWithValue("@name2", madeByBox.Text);
-                                    cmd3.Parameters.AddWithValue("@money", money);
-                                    cmd3.Prepare();
-                                    MySqlDataReader reader3 = cmd2.ExecuteReader();
-                                    while (reader2.Read())
-                                    {
-
-                                    }
-                                    reader2.Close();
-                                }
-                                else
-                                {
-                                    string sql3 = "UPDATE tbl_users SET (money=@money) WHERE (username=@name3)";
-                                    MySqlCommand cmd3 = new MySqlCommand(sql3, dbCon.Connection);
-                                    cmd3.Parameters.AddWithValue("@name3", madeByBox.Text);
-                                    cmd3.Parameters.AddWithValue("@money", money);
-                                    cmd3.Prepare();
-                                    MySqlDataReader reader3 = cmd2.ExecuteReader();
-                                    while (reader2.Read())
-                                    {
-
-                                    }
-                                    reader2.Close();
-                                }*/
-                            }
-                            reader.Close();
                             string dir = Directory.GetCurrentDirectory();
                             if (!Directory.Exists(@"Codes"))
                             {
@@ -266,8 +198,82 @@ namespace HackGame
                                 process.Start();
                             }
                             Thread.Sleep(1000);
-                            WebClient client = new WebClient();
-                            client.UploadFile("http://jtechgame.alwaysdata.net/download/item1/upload/upload/hidden/unifiedloading.php", "POST", dir + @"\Codes\" + nameBox.Text + ".exe");
+                            if (File.Exists(dir + @"\Codes\" + nameBox.Text + ".exe"))
+                            {
+                                WebClient client = new WebClient();
+                                client.UploadFile("http://jtechgame.alwaysdata.net/download/item1/upload/upload/hidden/unifiedloading.php", "POST", dir + @"\Codes\" + nameBox.Text + ".exe");
+                                string sql = "SELECT * FROM tbl_programs WHERE name=@name";
+                                MySqlCommand cmd = new MySqlCommand(sql, dbCon.Connection);
+                                cmd.Parameters.AddWithValue("@name", nameBox.Text);
+                                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+                                {
+
+                                }
+                                cmd.Prepare();
+                                MySqlDataReader reader = cmd.ExecuteReader();
+                                if (reader.HasRows)
+                                {
+                                    MessageBox.Show("This name is already taken");
+                                    while (reader.Read())
+                                    {
+
+                                    }
+                                    reader.Close();
+                                }
+                                else
+                                {
+                                    reader.Close();
+                                    sql = "INSERT INTO tbl_programs (name, price, made_by, categorie, created_at, available_since) VALUES (@name, @price, @madeBy, @categorie, NOW(), @availableSince)";
+                                    MySqlCommand cmd2 = new MySqlCommand(sql, dbCon.Connection);
+                                    cmd2.Parameters.AddWithValue("@name", nameBox.Text);
+                                    cmd2.Parameters.AddWithValue("@price", priceBox.Text);
+                                    cmd2.Parameters.AddWithValue("@madeBy", madeByBox.Text);
+                                    cmd2.Parameters.AddWithValue("@categorie", categorieComboBox.Text);
+                                    DateTime calculation = calculateTime();
+                                    cmd2.Parameters.AddWithValue("@availableSince", calculation);
+                                    cmd2.Prepare();
+                                    MySqlDataReader reader2 = cmd2.ExecuteReader();
+                                    while (reader2.Read())
+                                    {
+
+                                    }
+                                    money = money - (price / 2);
+                                    reader2.Close();
+                                    /*if (userMoney.Rows.Count == 0)
+                                    {
+                                        string sql3 = "UPDATE tbl_companies SET (money=@money) WHERE (name=@name2)";
+                                        MySqlCommand cmd3 = new MySqlCommand(sql3, dbCon.Connection);
+                                        cmd3.Parameters.AddWithValue("@name2", madeByBox.Text);
+                                        cmd3.Parameters.AddWithValue("@money", money);
+                                        cmd3.Prepare();
+                                        MySqlDataReader reader3 = cmd2.ExecuteReader();
+                                        while (reader2.Read())
+                                        {
+
+                                        }
+                                        reader2.Close();
+                                    }
+                                    else
+                                    {
+                                        string sql3 = "UPDATE tbl_users SET (money=@money) WHERE (username=@name3)";
+                                        MySqlCommand cmd3 = new MySqlCommand(sql3, dbCon.Connection);
+                                        cmd3.Parameters.AddWithValue("@name3", madeByBox.Text);
+                                        cmd3.Parameters.AddWithValue("@money", money);
+                                        cmd3.Prepare();
+                                        MySqlDataReader reader3 = cmd2.ExecuteReader();
+                                        while (reader2.Read())
+                                        {
+
+                                        }
+                                        reader2.Close();
+                                    }*/
+                                }
+                                reader.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("ERROR: Compiling error please check your code!", "Compiling ERROR");
+                            }
                         }
                         else
                         {
