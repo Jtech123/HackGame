@@ -93,6 +93,7 @@ namespace HackGame
                                 MainMenu mm = new MainMenu();
                                 mm.Show();
                                 stats.Show();
+                                this.Hide();
                             }
                             else
                             {
