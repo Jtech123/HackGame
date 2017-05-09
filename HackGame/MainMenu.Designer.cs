@@ -30,7 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.taskbar = new System.Windows.Forms.Panel();
+            this.statBtn = new System.Windows.Forms.Button();
+            this.storeBtn = new System.Windows.Forms.Button();
             this.timeLbl = new System.Windows.Forms.Label();
+            this.powerBtn = new System.Windows.Forms.Button();
             this.cashLbl = new System.Windows.Forms.Label();
             this.cashTmr = new System.Windows.Forms.Timer(this.components);
             this.username = new System.Windows.Forms.Label();
@@ -53,9 +56,6 @@
             this.researchLauncher = new System.Windows.Forms.Button();
             this.underdevLauncher = new System.Windows.Forms.Button();
             this.CT2017Launcher = new System.Windows.Forms.Button();
-            this.statBtn = new System.Windows.Forms.Button();
-            this.storeBtn = new System.Windows.Forms.Button();
-            this.powerBtn = new System.Windows.Forms.Button();
             this.taskbar.SuspendLayout();
             this.newsPopup.SuspendLayout();
             this.SuspendLayout();
@@ -74,6 +74,34 @@
             this.taskbar.Size = new System.Drawing.Size(1236, 49);
             this.taskbar.TabIndex = 0;
             // 
+            // statBtn
+            // 
+            this.statBtn.BackgroundImage = global::HackGame.Properties.Resources.connection;
+            this.statBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.statBtn.FlatAppearance.BorderSize = 0;
+            this.statBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.statBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.statBtn.Location = new System.Drawing.Point(109, 3);
+            this.statBtn.Name = "statBtn";
+            this.statBtn.Size = new System.Drawing.Size(40, 40);
+            this.statBtn.TabIndex = 3;
+            this.statBtn.UseVisualStyleBackColor = true;
+            this.statBtn.Click += new System.EventHandler(this.statBtn_Click);
+            // 
+            // storeBtn
+            // 
+            this.storeBtn.BackgroundImage = global::HackGame.Properties.Resources.store;
+            this.storeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.storeBtn.FlatAppearance.BorderSize = 0;
+            this.storeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.storeBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.storeBtn.Location = new System.Drawing.Point(63, 3);
+            this.storeBtn.Name = "storeBtn";
+            this.storeBtn.Size = new System.Drawing.Size(40, 40);
+            this.storeBtn.TabIndex = 2;
+            this.storeBtn.UseVisualStyleBackColor = true;
+            this.storeBtn.Click += new System.EventHandler(this.storeBtn_Click);
+            // 
             // timeLbl
             // 
             this.timeLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -86,6 +114,20 @@
             this.timeLbl.Size = new System.Drawing.Size(79, 20);
             this.timeLbl.TabIndex = 1;
             this.timeLbl.Text = "00:00:00";
+            // 
+            // powerBtn
+            // 
+            this.powerBtn.BackgroundImage = global::HackGame.Properties.Resources._004_power_button;
+            this.powerBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.powerBtn.FlatAppearance.BorderSize = 0;
+            this.powerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.powerBtn.ForeColor = System.Drawing.Color.White;
+            this.powerBtn.Location = new System.Drawing.Point(3, 3);
+            this.powerBtn.Name = "powerBtn";
+            this.powerBtn.Size = new System.Drawing.Size(40, 40);
+            this.powerBtn.TabIndex = 0;
+            this.powerBtn.UseVisualStyleBackColor = true;
+            this.powerBtn.Click += new System.EventHandler(this.powerBtn_Click);
             // 
             // cashLbl
             // 
@@ -362,48 +404,6 @@
             this.CT2017Launcher.UseVisualStyleBackColor = true;
             this.CT2017Launcher.Click += new System.EventHandler(this.CT2017Launcher_Click);
             // 
-            // statBtn
-            // 
-            this.statBtn.BackgroundImage = global::HackGame.Properties.Resources.connection;
-            this.statBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.statBtn.FlatAppearance.BorderSize = 0;
-            this.statBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.statBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.statBtn.Location = new System.Drawing.Point(109, 3);
-            this.statBtn.Name = "statBtn";
-            this.statBtn.Size = new System.Drawing.Size(40, 40);
-            this.statBtn.TabIndex = 3;
-            this.statBtn.UseVisualStyleBackColor = true;
-            this.statBtn.Click += new System.EventHandler(this.statBtn_Click);
-            // 
-            // storeBtn
-            // 
-            this.storeBtn.BackgroundImage = global::HackGame.Properties.Resources.store;
-            this.storeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.storeBtn.FlatAppearance.BorderSize = 0;
-            this.storeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.storeBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.storeBtn.Location = new System.Drawing.Point(63, 3);
-            this.storeBtn.Name = "storeBtn";
-            this.storeBtn.Size = new System.Drawing.Size(40, 40);
-            this.storeBtn.TabIndex = 2;
-            this.storeBtn.UseVisualStyleBackColor = true;
-            this.storeBtn.Click += new System.EventHandler(this.storeBtn_Click);
-            // 
-            // powerBtn
-            // 
-            this.powerBtn.BackgroundImage = global::HackGame.Properties.Resources._004_power_button;
-            this.powerBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.powerBtn.FlatAppearance.BorderSize = 0;
-            this.powerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.powerBtn.ForeColor = System.Drawing.Color.White;
-            this.powerBtn.Location = new System.Drawing.Point(3, 3);
-            this.powerBtn.Name = "powerBtn";
-            this.powerBtn.Size = new System.Drawing.Size(40, 40);
-            this.powerBtn.TabIndex = 0;
-            this.powerBtn.UseVisualStyleBackColor = true;
-            this.powerBtn.Click += new System.EventHandler(this.powerBtn_Click);
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -425,6 +425,7 @@
             this.Name = "MainMenu";
             this.Text = "MainMenu";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenu_FormClosing);
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.taskbar.ResumeLayout(false);
             this.taskbar.PerformLayout();

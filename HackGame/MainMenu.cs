@@ -240,5 +240,10 @@ namespace HackGame
             Library lb = new Library();
             lb.Show();
         }
+
+        private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

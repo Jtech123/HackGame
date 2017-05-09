@@ -272,7 +272,7 @@ namespace HackGame
                             }
                             else
                             {
-                                MessageBox.Show("ERROR: Compiling error please check your code!", "Compiling ERROR");
+                                MessageBox.Show("ERROR: Compiling error please check your code!", "Compiling ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         else

@@ -130,7 +130,9 @@ namespace HackGame
     {
         static void Main()
         {
-            Console.WriteLine("This program is made using Jtech's HackGame");
+            Console.WriteLine("This program is made using Jtech's HackGame!");
+            Console.WriteLine("Made with cooperation of Overpunch Studios!");
+            Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }
     }
