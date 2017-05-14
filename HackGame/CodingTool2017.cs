@@ -12,6 +12,7 @@ using System.IO;
 using MySql.Data.MySqlClient;
 using System.Net;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace HackGame
 {
@@ -61,7 +62,14 @@ namespace HackGame
 
             private void CodingTool2017_Load(object sender, EventArgs e)
             {
-                try
+            Regex r = new Regex("\\n");
+            string[] lines = r.Split(codeBox.Text);
+            codeBox.Text = "";
+            foreach (string l in lines)
+            {
+                ParseLine(l);
+            }
+            try
                 {
                     if (dbCon.IsConnect())
                     {
@@ -223,9 +231,9 @@ namespace HackGame
                                 else
                                 {
                                     reader.Close();
-                                    sql = "INSERT INTO tbl_programs (name, price, made_by, categorie, created_at, available_since) VALUES (@name, @price, @madeBy, @categorie, NOW(), @availableSince)";
+                                    sql = "INSERT INTO tbl_programs (name, price, made_by, categorie, created_at, available_since) VALUES (@name2, @price, @madeBy, @categorie, NOW(), @availableSince)";
                                     MySqlCommand cmd2 = new MySqlCommand(sql, dbCon.Connection);
-                                    cmd2.Parameters.AddWithValue("@name", nameBox.Text);
+                                    cmd2.Parameters.AddWithValue("@name2", nameBox.Text);
                                     cmd2.Parameters.AddWithValue("@price", priceBox.Text);
                                     cmd2.Parameters.AddWithValue("@madeBy", madeByBox.Text);
                                     cmd2.Parameters.AddWithValue("@categorie", categorieComboBox.Text);
@@ -239,34 +247,34 @@ namespace HackGame
                                     }
                                     money = money - (price / 2);
                                     reader2.Close();
-                                    /*if (userMoney.Rows.Count == 0)
+                                    if (userMoney.Rows.Count == 0)
                                     {
-                                        string sql3 = "UPDATE tbl_companies SET (money=@money) WHERE (name=@name2)";
-                                        MySqlCommand cmd3 = new MySqlCommand(sql3, dbCon.Connection);
-                                        cmd3.Parameters.AddWithValue("@name2", madeByBox.Text);
-                                        cmd3.Parameters.AddWithValue("@money", money);
-                                        cmd3.Prepare();
-                                        MySqlDataReader reader3 = cmd2.ExecuteReader();
-                                        while (reader2.Read())
-                                        {
-
-                                        }
-                                        reader2.Close();
-                                    }
-                                    else
-                                    {
-                                        string sql3 = "UPDATE tbl_users SET (money=@money) WHERE (username=@name3)";
+                                        string sql3 = "UPDATE tbl_companies SET (money=@money) WHERE (name=@name3)";
                                         MySqlCommand cmd3 = new MySqlCommand(sql3, dbCon.Connection);
                                         cmd3.Parameters.AddWithValue("@name3", madeByBox.Text);
                                         cmd3.Parameters.AddWithValue("@money", money);
                                         cmd3.Prepare();
                                         MySqlDataReader reader3 = cmd2.ExecuteReader();
-                                        while (reader2.Read())
+                                        while (reader3.Read())
                                         {
 
                                         }
-                                        reader2.Close();
-                                    }*/
+                                        reader3.Close();
+                                    }
+                                    else
+                                    {
+                                        string sql3 = "UPDATE tbl_users SET (money=@money) WHERE (username=@name4)";
+                                        MySqlCommand cmd3 = new MySqlCommand(sql3, dbCon.Connection);
+                                        cmd3.Parameters.AddWithValue("@name4", madeByBox.Text);
+                                        cmd3.Parameters.AddWithValue("@money", money);
+                                        cmd3.Prepare();
+                                        MySqlDataReader reader3 = cmd2.ExecuteReader();
+                                        while (reader3.Read())
+                                        {
+
+                                        }
+                                        reader3.Close();
+                                    }
                                 }
                                 reader.Close();
                             }
@@ -312,6 +320,74 @@ namespace HackGame
             priceBox.Text = calculatePrice().ToString();
         }
 
-        
+        void ParseLine(string line)
+        {
+            Regex r = new Regex("([ \\t{}().;])");
+            String[] tokens = r.Split(line);
+
+            foreach (string token in tokens)
+            {
+                // Set the token's default color and font.
+                codeBox.SelectionColor = Color.Black;
+                codeBox.SelectionFont = new Font("Courier New", 8, FontStyle.Regular);
+
+                // Check for a comment.
+                if (token == "//" || token.StartsWith("//"))
+                {
+                    // Find the start of the comment and then extract the whole comment.
+                    int index = line.IndexOf("//");
+                    string comment = line.Substring(index, line.Length - index);
+                    codeBox.SelectionColor = Color.Green;
+                    codeBox.SelectionFont = new Font("Courier New", 8, FontStyle.Regular);
+                    codeBox.SelectedText = comment;
+                    break;
+                }
+
+                // Check whether the token is a keyword. 
+                String[] blueKeywords = { "public", "void", "using", "static", "class", "string", "int", "char", "double", "float", "namespace",
+                    "private", "protected", "if", "else", "new", "object", "partial", "break", "foreach" };
+                String[] cyanKeywords = { "Color", "Font", "Console", "FontStyle", "EventArgs", "Form", "Directory", "Keys" };
+                for (int i = 0; i < blueKeywords.Length; i++)
+                {
+                    if (blueKeywords[i] == token)
+                    {
+                        // Apply alternative color and font to highlight keyword.
+                        codeBox.SelectionColor = Color.Blue;
+                        codeBox.SelectionFont = new Font("Courier New", 8, FontStyle.Bold);
+                        break;
+                    }
+                }
+                for (int i = 0; i < cyanKeywords.Length; i++)
+                {
+                    if (cyanKeywords[i] == token)
+                    {
+                        codeBox.SelectionColor = Color.DarkCyan;
+                        codeBox.SelectionFont = new Font("Courier New", 8, FontStyle.Bold);
+                        break;
+                    }
+                }
+
+                codeBox.SelectedText = token;
+            }
+            codeBox.SelectedText = "\n";
+        }
+
+        private void codeBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Space || e.KeyCode == Keys.OemPeriod)
+            {
+                int loc = codeBox.SelectionStart;
+                Regex r = new Regex("\\n");
+                string[] lines = r.Split(codeBox.Text);
+                codeBox.Text = "";
+                foreach (string l in lines)
+                {
+                    ParseLine(l);
+                }
+                codeBox.SelectionStart = loc;
+                codeBox.SelectionColor = Color.Black;
+                codeBox.SelectionFont = new Font("Courier New", 8, FontStyle.Regular);
+            }
+        }
     }
 }
