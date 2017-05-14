@@ -12,6 +12,7 @@ using System.IO;
 using MySql.Data.MySqlClient;
 using System.Net;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace HackGame
 {
@@ -61,7 +62,14 @@ namespace HackGame
 
             private void CodingTool2017_Load(object sender, EventArgs e)
             {
-                try
+            Regex r = new Regex("\\n");
+            string[] lines = r.Split(codeBox.Text);
+            codeBox.Text = "";
+            foreach (string l in lines)
+            {
+                ParseLine(l);
+            }
+            try
                 {
                     if (dbCon.IsConnect())
                     {
@@ -312,6 +320,75 @@ namespace HackGame
             priceBox.Text = calculatePrice().ToString();
         }
 
-        
+        private void codeBox_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        void ParseLine(string line)
+        {
+            Regex r = new Regex("([ \\t{}().;])");
+            String[] tokens = r.Split(line);
+
+            foreach (string token in tokens)
+            {
+                // Set the token's default color and font.
+                codeBox.SelectionColor = Color.Black;
+                codeBox.SelectionFont = new Font("Courier New", 8, FontStyle.Regular);
+
+                // Check for a comment.
+                if (token == "//" || token.StartsWith("//"))
+                {
+                    // Find the start of the comment and then extract the whole comment.
+                    int index = line.IndexOf("//");
+                    string comment = line.Substring(index, line.Length - index);
+                    codeBox.SelectionColor = Color.Green;
+                    codeBox.SelectionFont = new Font("Courier New", 8, FontStyle.Regular);
+                    codeBox.SelectedText = comment;
+                    break;
+                }
+
+                // Check whether the token is a keyword. 
+                String[] blueKeywords = { "public", "void", "using", "static", "class", "string", "int", "char", "double", "float", "namespace",
+                    "private", "protected", "if", "else", "new", "object", "partial", "break", "foreach" };
+                String[] cyanKeywords = { "Color", "Font", "Console", "FontStyle", "EventArgs", "Form", "Directory", "Keys" };
+                for (int i = 0; i < blueKeywords.Length; i++)
+                {
+                    if (blueKeywords[i] == token)
+                    {
+                        // Apply alternative color and font to highlight keyword.
+                        codeBox.SelectionColor = Color.Blue;
+                        codeBox.SelectionFont = new Font("Courier New", 8, FontStyle.Bold);
+                        break;
+                    }
+                }
+                for (int i = 0; i < cyanKeywords.Length; i++)
+                {
+                    if (cyanKeywords[i] == token)
+                    {
+                        codeBox.SelectionColor = Color.DarkCyan;
+                        codeBox.SelectionFont = new Font("Courier New", 8, FontStyle.Bold);
+                        break;
+                    }
+                }
+
+                codeBox.SelectedText = token;
+            }
+            codeBox.SelectedText = "\n";
+        }
+
+        private void codeBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Regex r = new Regex("\\n");
+                string[] lines = r.Split(codeBox.Text);
+                codeBox.Text = "";
+                foreach (string l in lines)
+                {
+                    ParseLine(l);
+                }
+            }
+        }
     }
 }
