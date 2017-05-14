@@ -201,6 +201,7 @@
             // 
             // codeBox
             // 
+            this.codeBox.AcceptsTab = true;
             this.codeBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.codeBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.codeBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -210,7 +211,6 @@
             this.codeBox.TabIndex = 0;
             this.codeBox.Text = resources.GetString("codeBox.Text");
             this.codeBox.WordWrap = false;
-            this.codeBox.TextChanged += new System.EventHandler(this.codeBox_TextChanged);
             this.codeBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.codeBox_KeyDown);
             // 
             // CodingTool2017
