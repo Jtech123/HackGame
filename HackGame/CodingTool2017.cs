@@ -362,8 +362,8 @@ namespace HackGame
 
                 // Check whether the token is a keyword. 
                 String[] blueKeywords = { "public", "void", "using", "static", "class", "string", "int", "char", "double", "float", "namespace",
-                    "private", "protected", "if", "else", "new", "object", "partial", "break", "foreach" };
-                String[] cyanKeywords = { "Color", "Font", "Console", "FontStyle", "EventArgs", "Form", "Directory", "Keys" };
+                    "private", "protected", "if", "else", "new", "object", "partial", "break", "foreach", "var" };
+                String[] cyanKeywords = { "Color", "Font", "Console", "FontStyle", "EventArgs", "Form", "Directory", "Keys", "Convert" };
                 for (int j = 0; j < blueKeywords.Length; j++)
                 {
                     if (blueKeywords[j] == tokens[i])
