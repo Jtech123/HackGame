@@ -18,6 +18,7 @@ namespace HackGame
 {
     public partial class CodingTool2017 : Form
     {
+        int caretlocation;
         public CodingTool2017()
         {
             InitializeComponent();
@@ -324,21 +325,23 @@ namespace HackGame
         {
             Regex r = new Regex("([ \\t{}().;])");
             String[] tokens = r.Split(line);
+            Font NewB = new Font("Courier New", 8, FontStyle.Bold);
+            Font New = new Font("Courier New", 8, FontStyle.Regular);
 
-            foreach (string token in tokens)
+            for(int i = 0; i < tokens.Length; i++)
             {
                 // Set the token's default color and font.
                 codeBox.SelectionColor = Color.Black;
-                codeBox.SelectionFont = new Font("Courier New", 8, FontStyle.Regular);
+                codeBox.SelectionFont = New;
 
                 // Check for a comment.
-                if (token == "//" || token.StartsWith("//"))
+                if (tokens[i] == "//" || tokens[i].StartsWith("//"))
                 {
                     // Find the start of the comment and then extract the whole comment.
                     int index = line.IndexOf("//");
                     string comment = line.Substring(index, line.Length - index);
                     codeBox.SelectionColor = Color.Green;
-                    codeBox.SelectionFont = new Font("Courier New", 8, FontStyle.Regular);
+                    codeBox.SelectionFont = New;
                     codeBox.SelectedText = comment;
                     break;
                 }
@@ -347,27 +350,27 @@ namespace HackGame
                 String[] blueKeywords = { "public", "void", "using", "static", "class", "string", "int", "char", "double", "float", "namespace",
                     "private", "protected", "if", "else", "new", "object", "partial", "break", "foreach" };
                 String[] cyanKeywords = { "Color", "Font", "Console", "FontStyle", "EventArgs", "Form", "Directory", "Keys" };
-                for (int i = 0; i < blueKeywords.Length; i++)
+                for (int j = 0; j < blueKeywords.Length; j++)
                 {
-                    if (blueKeywords[i] == token)
+                    if (blueKeywords[j] == tokens[i])
                     {
                         // Apply alternative color and font to highlight keyword.
                         codeBox.SelectionColor = Color.Blue;
-                        codeBox.SelectionFont = new Font("Courier New", 8, FontStyle.Bold);
+                        codeBox.SelectionFont = NewB;
                         break;
                     }
                 }
-                for (int i = 0; i < cyanKeywords.Length; i++)
+                for (int j = 0; j < cyanKeywords.Length; j++)
                 {
-                    if (cyanKeywords[i] == token)
+                    if (cyanKeywords[j] == tokens[i])
                     {
                         codeBox.SelectionColor = Color.DarkCyan;
-                        codeBox.SelectionFont = new Font("Courier New", 8, FontStyle.Bold);
+                        codeBox.SelectionFont = NewB;
                         break;
                     }
                 }
 
-                codeBox.SelectedText = token;
+                codeBox.SelectedText = tokens[i];
             }
             codeBox.SelectedText = "\n";
         }
@@ -376,14 +379,15 @@ namespace HackGame
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Space || e.KeyCode == Keys.OemPeriod)
             {
+                caretlocation = codeBox.GetLineFromCharIndex(codeBox.SelectionStart);
                 int loc = codeBox.SelectionStart;
                 Regex r = new Regex("\\n");
-                string[] lines = r.Split(codeBox.Text);
-                codeBox.Text = "";
-                foreach (string l in lines)
-                {
-                    ParseLine(l);
-                }
+                string currentline = codeBox.Lines[caretlocation];
+                int charnumber = codeBox.GetFirstCharIndexFromLine(caretlocation);
+                codeBox.SelectionStart = charnumber;
+                codeBox.SelectionLength = currentline.Length + 1;
+                codeBox.SelectedText = string.Empty;
+                ParseLine(currentline);
                 codeBox.SelectionStart = loc;
                 codeBox.SelectionColor = Color.Black;
                 codeBox.SelectionFont = new Font("Courier New", 8, FontStyle.Regular);

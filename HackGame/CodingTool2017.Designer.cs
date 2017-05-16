@@ -40,12 +40,12 @@
             this.featureTab = new System.Windows.Forms.TabPage();
             this.featureList = new System.Windows.Forms.CheckedListBox();
             this.codeTab = new System.Windows.Forms.TabPage();
+            this.codeBox = new System.Windows.Forms.RichTextBox();
             this.categorieComboBox = new System.Windows.Forms.ComboBox();
             this.madeByBox = new System.Windows.Forms.ComboBox();
             this.username1 = new System.Windows.Forms.Label();
             this.priceBox = new System.Windows.Forms.Label();
             this.priceUpdater = new System.Windows.Forms.Timer(this.components);
-            this.codeBox = new System.Windows.Forms.RichTextBox();
             this.tabs.SuspendLayout();
             this.featureTab.SuspendLayout();
             this.codeTab.SuspendLayout();
@@ -154,6 +154,20 @@
             this.codeTab.Text = "Code";
             this.codeTab.UseVisualStyleBackColor = true;
             // 
+            // codeBox
+            // 
+            this.codeBox.AcceptsTab = true;
+            this.codeBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.codeBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.codeBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codeBox.Location = new System.Drawing.Point(3, 3);
+            this.codeBox.Name = "codeBox";
+            this.codeBox.Size = new System.Drawing.Size(617, 418);
+            this.codeBox.TabIndex = 0;
+            this.codeBox.Text = resources.GetString("codeBox.Text");
+            this.codeBox.WordWrap = false;
+            this.codeBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.codeBox_KeyDown);
+            // 
             // categorieComboBox
             // 
             this.categorieComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -198,20 +212,6 @@
             // 
             this.priceUpdater.Enabled = true;
             this.priceUpdater.Tick += new System.EventHandler(this.priceUpdater_Tick);
-            // 
-            // codeBox
-            // 
-            this.codeBox.AcceptsTab = true;
-            this.codeBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.codeBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.codeBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.codeBox.Location = new System.Drawing.Point(3, 3);
-            this.codeBox.Name = "codeBox";
-            this.codeBox.Size = new System.Drawing.Size(617, 418);
-            this.codeBox.TabIndex = 0;
-            this.codeBox.Text = resources.GetString("codeBox.Text");
-            this.codeBox.WordWrap = false;
-            this.codeBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.codeBox_KeyDown);
             // 
             // CodingTool2017
             // 
