@@ -206,7 +206,21 @@ namespace HackGame
                                 process.StartInfo = startInfo;
                                 process.Start();
                             }
-                            Thread.Sleep(1000);
+                            Publish.Text = "Publishing";
+                            Thread.Sleep(500);
+                            Publish.Text = "Publishing.";
+                            Thread.Sleep(500);
+                            Publish.Text = "Publishing..";
+                            Thread.Sleep(500);
+                            Publish.Text = "Publishing...";
+                            Thread.Sleep(500);
+                            Publish.Text = "Publishing.";
+                            Thread.Sleep(500);
+                            Publish.Text = "Publishing..";
+                            Thread.Sleep(500);
+                            Publish.Text = "Publishing...";
+                            Thread.Sleep(500);
+                            Publish.Text = "Published";
                             if (File.Exists(dir + @"\Codes\" + nameBox.Text + ".exe"))
                             {
                                 WebClient client = new WebClient();

@@ -81,7 +81,7 @@
             // Publish
             // 
             this.Publish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Publish.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Publish.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F);
             this.Publish.Location = new System.Drawing.Point(652, 396);
             this.Publish.Name = "Publish";
             this.Publish.Size = new System.Drawing.Size(222, 60);
