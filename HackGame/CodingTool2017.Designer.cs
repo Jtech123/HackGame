@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CodingTool2017));
-            this.codeBox = new System.Windows.Forms.TextBox();
             this.CategorieLbl = new System.Windows.Forms.Label();
             this.PriceLbl = new System.Windows.Forms.Label();
             this.mbLbl = new System.Windows.Forms.Label();
@@ -41,6 +40,7 @@
             this.featureTab = new System.Windows.Forms.TabPage();
             this.featureList = new System.Windows.Forms.CheckedListBox();
             this.codeTab = new System.Windows.Forms.TabPage();
+            this.codeBox = new System.Windows.Forms.RichTextBox();
             this.categorieComboBox = new System.Windows.Forms.ComboBox();
             this.madeByBox = new System.Windows.Forms.ComboBox();
             this.username1 = new System.Windows.Forms.Label();
@@ -50,23 +50,6 @@
             this.featureTab.SuspendLayout();
             this.codeTab.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // codeBox
-            // 
-            this.codeBox.AcceptsReturn = true;
-            this.codeBox.AcceptsTab = true;
-            this.codeBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.codeBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.codeBox.Location = new System.Drawing.Point(6, 6);
-            this.codeBox.Multiline = true;
-            this.codeBox.Name = "codeBox";
-            this.codeBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.codeBox.Size = new System.Drawing.Size(611, 412);
-            this.codeBox.TabIndex = 0;
-            this.codeBox.TabStop = false;
-            this.codeBox.Text = resources.GetString("codeBox.Text");
             // 
             // CategorieLbl
             // 
@@ -171,6 +154,20 @@
             this.codeTab.Text = "Code";
             this.codeTab.UseVisualStyleBackColor = true;
             // 
+            // codeBox
+            // 
+            this.codeBox.AcceptsTab = true;
+            this.codeBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.codeBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.codeBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codeBox.Location = new System.Drawing.Point(3, 3);
+            this.codeBox.Name = "codeBox";
+            this.codeBox.Size = new System.Drawing.Size(617, 418);
+            this.codeBox.TabIndex = 0;
+            this.codeBox.Text = resources.GetString("codeBox.Text");
+            this.codeBox.WordWrap = false;
+            this.codeBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.codeBox_KeyDown);
+            // 
             // categorieComboBox
             // 
             this.categorieComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -240,15 +237,12 @@
             this.tabs.ResumeLayout(false);
             this.featureTab.ResumeLayout(false);
             this.codeTab.ResumeLayout(false);
-            this.codeTab.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox codeBox;
         private System.Windows.Forms.Label CategorieLbl;
         private System.Windows.Forms.Label PriceLbl;
         private System.Windows.Forms.Label mbLbl;
@@ -264,5 +258,6 @@
         private System.Windows.Forms.Label username1;
         private System.Windows.Forms.Label priceBox;
         private System.Windows.Forms.Timer priceUpdater;
+        private System.Windows.Forms.RichTextBox codeBox;
     }
 }
